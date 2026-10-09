@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}{{ comic.title }} — ComicCraft{% endblock %}
+{% block content %}
+<main class="preview-shell">
+  <div class="preview-top">
+    <div>
+      <div class="eyebrow">ISSUE READY FOR PRINT</div>
+      <h1>{{ comic.title }}</h1>
+      <p>{{ comic.tagline }}</p>
+    </div>
+    <div class="actions">
+      <a class="secondary-btn" href="/">+ NEW COMIC</a>
+      <a class="create-btn small" href="{{ comic.pdf }}" download>↓ DOWNLOAD PDF</a>
+    </div>
+  </div>
+
+  <div class="comic-book">
+    <div class="comic-book-title">
+      <span>ISSUE #01 // NEON EDITION</span>
+      <span>POWERED BY GEMINI AI</span>
+    </div>
+
+    <div class="panel-grid count-{{ comic.panels|length }}">
+      {% for panel in comic.panels %}
+      <article class="comic-panel" tabindex="0">
+        <div class="panel-number">#{{ "%02d"|format(panel.number) }}</div>
+        <img src="{{ panel.image }}" alt="{{ panel.title }}" loading="lazy">
+        <div class="panel-copy">
+          <h2>{{ panel.title }}</h2>
+          <p class="scene">{{ panel.scene }}</p>
+          <div class="speech">“{{ panel.dialogue }}”</div>
+          <p class="narration">{{ panel.narration }}</p>
+          <small>{{ panel.caption }}</small>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <section class="ending-card">
+    <div class="ending-star">[ENDING_STAR]</div>
+    <div>
+      <h2>Your story. Your universe.</h2>
+      <p>Download your PDF issue, share it across networks, or create another saga.</p>
+    </div>
+    <a class="create-btn small" href="{{ comic.pdf }}" download>DOWNLOAD COMIC</a>
+  </section>
+</main>
+{% endblock %}
