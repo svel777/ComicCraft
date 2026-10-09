@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}ComicCraft — Cyber Noir Story Studio{% endblock %}
+{% block content %}
+<main class="creator-shell">
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">NEON NOIR STORY STUDIO</div>
+      <h1>Turn your idea into a <span>comic.</span></h1>
+      <p>Dream it. Describe it. Watch Gemini turn your imagination into a high-contrast cyber noir comic adventure.</p>
+      <div class="hero-tags">
+        <span>5 CINEMATIC PANELS</span>
+        <span>AI ILLUSTRATIONS</span>
+        <span>PDF EXPORT</span>
+      </div>
+    </div>
+    <div class="mascot" aria-label="ComicCraft cyber mascot">
+      <div class="burst">BOOM!</div>
+      <div class="robot">
+        <div class="antenna"></div>
+        <div class="robot-head"><i></i><i></i><b></b></div>
+        <div class="robot-body"><span>⚡</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="studio-card">
+    <div class="studio-header">
+      <div>
+        <div class="mini-label">CREATE YOUR UNIVERSE</div>
+        <h2>Build your comic</h2>
+      </div>
+      <div class="step-pill">01 / 01</div>
+    </div>
+
+    <form id="comic-form" action="/generate" method="post">
+      <div class="field full">
+        <label for="story_prompt">Story idea</label>
+        <textarea id="story_prompt" name="story_prompt" required maxlength="1000"
+          placeholder="Example: A lone cyberpunk detective uncovers a forbidden garden hidden inside a mega-corporation's server stack..."></textarea>
+        <div class="prompt-tools">
+          <span id="char-count">0 / 1000</span>
+          <div class="chips">
+            <button type="button" class="chip" data-prompt="A rogue hacker uncovers an ancient AI entity deep inside the city subway lines">Cyber Noir</button>
+            <button type="button" class="chip" data-prompt="A pilot navigates through a neon meteor storm to deliver a cryptic message">Sci-Fi</button>
+            <button type="button" class="chip" data-prompt="A street racer enters a high-stakes midnight tournament across skyscraper rooftops">Action</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label>Main character</label>
+          <input name="character_name" value="Milo" placeholder="e.g. Luna" required>
+        </div>
+        <div class="field">
+          <label>Setting</label>
+          <select name="setting">
+            <option>Neon cyberpunk city</option>
+            <option>Underground bunker</option>
+            <option>Retro arcade arcade</option>
+            <option>Deep space station</option>
+            <option>Submerged ocean metropolis</option>
+            <option>Volcanic ruins</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Story tone</label>
+          <select name="tone">
+            <option>Cyber Noir</option>
+            <option>High-Octane Action</option>
+            <option>Dark Mystery</option>
+            <option>Gritty Adventure</option>
+            <option>Dystopian</option>
+            <option>Epic Saga</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Art style</label>
+          <select name="art_style">
+            <option>High-Contrast Comic</option>
+            <option>Neon Noir Manga</option>
+            <option>Retro Synthwave</option>
+            <option>Dark Graphic Novel</option>
+            <option>Cyberpunk Ink</option>
+            <option>Pixel Cyber</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="style-strip">
+        <div>
+          <span class="mini-label">PANELS</span>
+          <div class="panel-selector">
+            <label><input type="radio" name="panels" value="3"> <span>3</span></label>
+            <label><input type="radio" name="panels" value="4"> <span>4</span></label>
+            <label><input type="radio" name="panels" value="5" checked> <span>5</span></label>
+            <label><input type="radio" name="panels" value="6"> <span>6</span></label>
+          </div>
+        </div>
+        <button class="create-btn" type="submit">
+          <span>GENERATE COMIC</span><b>→</b>
+        </button>
+      </div>
+    </form>
+
+    <div id="loading" class="loading-overlay" hidden>
+      <div class="loading-book">
+        <div class="loading-page"></div>
+        <div class="loading-page"></div>
+        <div class="loading-page"></div>
+      </div>
+      <h3 id="loading-title">Rendering matrix...</h3>
+      <p id="loading-text">Gemini is compiling the narrative arc and generating panel visuals.</p>
+      <div class="progress-track"><div id="progress-bar"></div></div>
+      <div class="loading-steps"><span>Script</span><span>Vectoring</span><span>Print</span></div>
+    </div>
+  </section>
+
+  <section class="feature-row">
+    <div><strong>01</strong><h3>Imagine</h3><p>Provide a hook, character, and tone.</p></div>
+    <div><strong>02</strong><h3>Generate</h3><p>Gemini crafts comic panels and dialog.</p></div>
+    <div><strong>03</strong><h3>Export</h3><p>Preview online and download vector PDF.</p></div>
+  </section>
+</main>
+{% endblock %}
